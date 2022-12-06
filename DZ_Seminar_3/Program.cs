@@ -67,82 +67,82 @@
 // //Сначала задается N с клавиатуры, потом задаются координаты точек.
 
 
-// void Distance(double[] arr1, double[] arr2, int n)
-// {
-//     double d = 0;
-//     for (int In = 0; In < n; In++)
-//     {
-//         d = d + (Math.Pow((arr1[In] - arr2[In]), 2));
-//     }
-//     double dis = Math.Sqrt(d);
-//     Console.WriteLine($"Расстояние между двумя точками равно {dis}");
-// }
-// void FirstKoord(double[] arrr1, int n1)
-// {
-//     Console.WriteLine("Введите координаты первой точки");
-//     for (int i = 0; i < n1; i++)
-//     {
-//         arrr1[i] = Convert.ToDouble(Console.ReadLine());
-//     }
-// }
-// void SecondKoord(Double[] arrr2, int n2)
-// {
-//     Console.WriteLine("Введите координаты второй точки");
-//     for (int j = 0; j < n2; j++)
-//     {
-//         arrr2[j] = Convert.ToDouble(Console.ReadLine());
-//     }
-// }
-// try
-// {
-//     Console.WriteLine("Введите размерность");
-//     int N = Convert.ToInt32(Console.ReadLine());
-//     double[] array1 = new double[N];
-//     double[] array2 = new double[N];
-//     FirstKoord(array1, N);
-//     SecondKoord(array2, N);
-//     Distance(array1, array2, N);
-// }
-// catch
-// {
-//     Console.WriteLine("Что то пошло не так, проверьте правильность ввода координат");
-// }
+void Distance(double[] arr1, double[] arr2, int n)
+{
+    double d = 0;
+    for (int In = 0; In < n; In++)
+    {
+        d = d + (Math.Pow((arr1[In] - arr2[In]), 2));
+    }
+    double dis = Math.Sqrt(d);
+    Console.WriteLine($"Расстояние между двумя точками равно {dis}");
+}
+void FirstKoord(double[] arrr1, int n1)
+{
+    Console.WriteLine("Введите координаты первой точки");
+    for (int i = 0; i < n1; i++)
+    {
+        arrr1[i] = Convert.ToDouble(Console.ReadLine());
+    }
+}
+void SecondKoord(Double[] arrr2, int n2)
+{
+    Console.WriteLine("Введите координаты второй точки");
+    for (int j = 0; j < n2; j++)
+    {
+        arrr2[j] = Convert.ToDouble(Console.ReadLine());
+    }
+}
+try
+{
+    Console.WriteLine("Введите размерность");
+    int N = Convert.ToInt32(Console.ReadLine());
+    double[] array1 = new double[N];
+    double[] array2 = new double[N];
+    FirstKoord(array1, N);
+    SecondKoord(array2, N);
+    Distance(array1, array2, N);
+}
+catch
+{
+    Console.WriteLine("Что то пошло не так, проверьте правильность ввода координат");
+}
 
 //Задача 19 - HARD необязательная
 //Напишите программу, которая принимает на вход целое число любой разрядности и проверяет, 
 //является ли оно палиндромом. Через строку нельзя решать само собой.
-int Razr(int n)
-{
-    int i = 1;
-    while (n > 10)
-    {
-        n=n / 10;
-        i++;
-    }
-    return i;
-}
-string Check(int num, int n)
-{
-    for (int i = 1; i <= n ; i++)
-    {   
-        int num1 = Convert.ToInt32(num / Math.Pow(10, n - 1));
-        if (num1 == num % 10)
-        {
-            num = Convert.ToInt32(num % Math.Pow(10, n - 1) / 10);
-            n=n-2;
-        }
-        else return ("Введенное число  не является палиндромом");
-    }
-    return ("Введенное число является палиндромом");
-}    
-try
-{
-Console.WriteLine("Введите число");
-int number = Convert.ToInt32(Console.ReadLine());
-int N = Razr(number);
-Console.WriteLine(Check(number,N));
-}
-catch
-{
-    Console.WriteLine("Что то пошло не так, проверьте число");
-}
+// int Razr(int n)
+// {
+//     int i = 1;
+//     while (n > 10)
+//     {
+//         n=n / 10;
+//         i++;
+//     }
+//     return i;
+// }
+// string Check(int num, int n)
+// {
+//     for (int i = 1; i <= n ; i++)
+//     {   
+//         int num1 = Convert.ToInt32(num / Math.Pow(10, n - 1));
+//         if (num1 == num % 10)
+//         {
+//             num = Convert.ToInt32(num % Math.Pow(10, n - 1) / 10);
+//             n=n-2;
+//         }
+//         else return ("Введенное число  не является палиндромом");
+//     }
+//     return ("Введенное число является палиндромом");
+// }    
+// try
+// {
+// Console.WriteLine("Введите число");
+// int number = Convert.ToInt32(Console.ReadLine());
+// int N = Razr(number);
+// Console.WriteLine(Check(number,N));
+// }
+// catch
+// {
+//     Console.WriteLine("Что то пошло не так, проверьте число");
+// }
