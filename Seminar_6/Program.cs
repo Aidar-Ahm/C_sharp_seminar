@@ -184,33 +184,62 @@
 //Определить , является ли это сторонами треугольника. Если да, то вывести всю информацию
 // по нему - площадь, периметр, значения углов треугольника в градусах, 
 //является ли он прямоугольным, равнобедренным, равносторонним.
+// Console.WriteLine("Введите длину первой стороны");
+// double A = Convert.ToInt32(Console.ReadLine());
+// Console.WriteLine("Введите длину второй стороны");
+// double B = Convert.ToInt32(Console.ReadLine());
+// Console.WriteLine("Введите длину третьей стороны");
+// double C = Convert.ToInt32(Console.ReadLine());
+
+// if (A < B + C && B < A + C && C < A + B)
+// {
+//     double angle1 = (Math.Pow(B, 2) + Math.Pow(C, 2) - Math.Pow(A, 2)) / (2 * B * C);
+//     double angle2 = (Math.Acos((Math.Pow(C, 2) + Math.Pow(A, 2) - Math.Pow(B, 2)) / (2 * A * B))) * 180 / Math.PI;
+//     double angle3 = (Math.Acos((Math.Pow(A, 2) + Math.Pow(B, 2) - Math.Pow(C, 2)) / (2 * A * C))) * 180 / Math.PI;
+//     double P = (A + B + C) / 2;
+//     double S = Math.Sqrt(P * (P - A) * (P - B) * (P - C));
+//     Console.WriteLine("Треугольник является:");
+//     if (A == B && B == C && C == A)
+//         Console.WriteLine("- равносторонним");
+//     if ((A * A == C * C + B * B) || (C * C == A * A + B * B) || (B * B == C * C + A * A))
+//         Console.WriteLine("- прямоугольным");
+//     if ((A == C && A == B) || (C == A && C == B) || (B == A && B == C))
+//         Console.WriteLine("- равнобедренным");
+//     Console.WriteLine($"Площадь треугольника равно {S}");
+//     Console.WriteLine($"Периметр треугольника равен {P}");
+//     Console.WriteLine($"Углы треугольника равны {Convert.ToInt32(angle1)} {angle2} {Convert.ToInt32(angle3)} градусов");
+// }
+// else
+//     Console.WriteLine("Треугольника с такими сторонами не существует");
+
+
 Console.WriteLine("Введите длину первой стороны");
-double A = Convert.ToInt32(Console.ReadLine());
+double A = Convert.ToDouble(Console.ReadLine());
 Console.WriteLine("Введите длину второй стороны");
-double B = Convert.ToInt32(Console.ReadLine());
+double B = Convert.ToDouble(Console.ReadLine());
 Console.WriteLine("Введите длину третьей стороны");
-double C = Convert.ToInt32(Console.ReadLine());
+double C = Convert.ToDouble(Console.ReadLine());
 
 if (A < B + C && B < A + C && C < A + B)
 {
-    double angle1 = (Math.Pow(B, 2) + Math.Pow(C, 2) - Math.Pow(A, 2)) / (2 * B * C);
-    double angle2 = (Math.Acos((Math.Pow(C, 2) + Math.Pow(A, 2) - Math.Pow(B, 2)) / (2 * A * B))) * 180 / Math.PI;
-    double angle3 = (Math.Acos((Math.Pow(A, 2) + Math.Pow(B, 2) - Math.Pow(C, 2)) / (2 * A * C))) * 180 / Math.PI;
+    double angle1 = Math.Acos((Math.Pow(B, 2) + Math.Pow(C, 2) - Math.Pow(A, 2)) / (2 * B * C)) * 180 / Math.PI; ;
+    double angle2 = Math.Acos((Math.Pow(A, 2) + Math.Pow(C, 2) - Math.Pow(B, 2)) / (2 * A * C)) * 180 / Math.PI;
+    double angle3 = 180 - angle1 - angle2;
     double P = (A + B + C) / 2;
     double S = Math.Sqrt(P * (P - A) * (P - B) * (P - C));
-    Console.WriteLine("Треугольник является:");
+    Console.WriteLine("Характеристики треугольника:");
     if (A == B && B == C && C == A)
-        Console.WriteLine("- равносторонним");
+        Console.WriteLine("- равносторонний");
+    else if (A == C || C == B || A==B)
+        Console.WriteLine("- равнобедренный");
     if ((A * A == C * C + B * B) || (C * C == A * A + B * B) || (B * B == C * C + A * A))
-        Console.WriteLine("- прямоугольным");
-    if ((A == C && A == B) || (C == A && C == B) || (B == A && B == C))
-        Console.WriteLine("- равнобедренным");
-    Console.WriteLine($"Площадь треугольника равно {S}");
-    Console.WriteLine($"Периметр треугольника равен {P}");
-    Console.WriteLine($"Углы треугольника равны {Convert.ToInt32(angle1)} {angle2} {Convert.ToInt32(angle3)} градусов");
+        Console.WriteLine("- прямоугольный");
+
+
+    Console.WriteLine($"- площадь треугольника равна {S}");
+    Console.WriteLine($"- периметр треугольника равен {P}");
+    Console.WriteLine($"- углы треугольника равны {Math.Round(angle1, 2)} {Math.Round(angle2, 2)} {Math.Round(angle3)} градусам");
 }
 else
     Console.WriteLine("Треугольника с такими сторонами не существует");
-
-
 
