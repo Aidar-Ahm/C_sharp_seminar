@@ -1,34 +1,34 @@
-﻿//Задача 47. Задайте двумерный массив размером m×n, заполненный случайными вещественными числами.
+﻿// //Задача 47. Задайте двумерный массив размером m×n, заполненный случайными вещественными числами.
 
-void FillArray(double[,] arr)
-{
-    for (int i = 0; i < arr.GetLength(0); i++)
-    {
-        for (int j = 0; j < arr.GetLength(1); j++)
-        {
-            arr[i, j] = new Random().Next(-1000,1001);
-            arr[i,j] = Math.Round((arr[i,j]/100),2);
-        }
-    }
-}
-void PrintArray(double[,] arr)
-{
-    for (int i = 0; i < arr.GetLength(0); i++)
-    {
-        for (int j = 0; j < arr.GetLength(1); j++)
-        {
-            Console.Write($"{arr[i, j],3}\t");
-        }
-        Console.WriteLine();
-    }
-}
-Console.WriteLine("Введите количество строк");
-int rows = Convert.ToInt32(Console.ReadLine());
-Console.WriteLine("Введите колличество столбцов");
-int cols = Convert.ToInt32(Console.ReadLine());
-double[,] matrix = new double[rows, cols];
-FillArray(matrix);
-PrintArray(matrix);
+// void FillArray(double[,] arr)
+// {
+//     for (int i = 0; i < arr.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < arr.GetLength(1); j++)
+//         {
+//             arr[i, j] = new Random().Next(-1000,1001);
+//             arr[i,j] = Math.Round((arr[i,j]/100),2);
+//         }
+//     }
+// }
+// void PrintArray(double[,] arr)
+// {
+//     for (int i = 0; i < arr.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < arr.GetLength(1); j++)
+//         {
+//             Console.Write($"{arr[i, j],3}\t");
+//         }
+//         Console.WriteLine();
+//     }
+// }
+// Console.WriteLine("Введите количество строк");
+// int rows = Convert.ToInt32(Console.ReadLine());
+// Console.WriteLine("Введите колличество столбцов");
+// int cols = Convert.ToInt32(Console.ReadLine());
+// double[,] matrix = new double[rows, cols];
+// FillArray(matrix);
+// PrintArray(matrix);
 
 // //Задача 50. Напишите программу, которая на вход принимает значение элемента в двумерном массиве, 
 // //и возвращает позицию этого элемента или же указание, что такого элемента нет.
@@ -186,3 +186,75 @@ PrintArray(matrix);
 // Console.WriteLine();
 // PrintArray(matrix);
 
+//Сгенерировать массив случайных целых чисел размерностью m*n (размерность вводим с клавиатуры),
+//причем чтоб количество элементов было четное. Вывести на экран красивенько таблицей.
+//Перемешать случайным образом элементы массива, причем чтобы каждый элемент гарантированно 
+//и только один раз переместился на другое место и выполнить перемешивание за m*n / 2 итераций.
+//То есть если массив три на четыре, то надо выполнить за 6 итераций.
+// И далее в конце опять вывести на экран как таблицу.
+void FillArray(int[,] arr)
+{
+    for (int i = 0; i < arr.GetLength(0); i++)
+    {
+        for (int j = 0; j < arr.GetLength(1); j++)
+            arr[i, j] = new Random().Next(-9, 10);
+    }
+}
+
+void PrintArray(int[,] arr)
+{
+    for (int i = 0; i < arr.GetLength(0); i++)
+    {
+        for (int j = 0; j < arr.GetLength(1); j++)
+        {
+            Console.Write($"{arr[i, j],2}\t");
+        }
+        Console.WriteLine();
+    }
+}
+
+void Shufle(int[,] arr)
+{
+    int temp = 0;
+    if (arr.GetLength(1) % 2 == 0)
+    {
+        for (int i = 0; i < arr.GetLength(0); i++)
+        {
+            {
+                for (int j = 0; j < arr.GetLength(1) / 2; j++)
+                {
+                    temp = arr[i, j];
+                    arr[i, j] = arr[i, arr.GetLength(1) - 1 - j];
+                    arr[i, arr.GetLength(1) - 1 - j] = temp;
+                }
+            }
+        }
+    }
+    else if (arr.GetLength(0) % 2 == 0)
+    {
+        for (int i = 0; i < arr.GetLength(0)/2; i++)
+        {
+            for (int j = 0; j < arr.GetLength(1); j++)
+            {
+                temp = arr[i, j];
+                arr[i, j] = arr[arr.GetLength(0) - 1 - i, j];
+                arr[arr.GetLength(0) - 1 - i, j] = temp;
+            }
+        }
+    }
+}
+Console.WriteLine("Введите количество строк");
+int rows = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Введите колличество столбцов");
+int cols = Convert.ToInt32(Console.ReadLine());
+int[,] matrix = new int[rows, cols];
+if (rows * cols % 2 == 0)
+{
+    FillArray(matrix);
+    PrintArray(matrix);
+    Shufle(matrix);
+    Console.WriteLine();
+    PrintArray(matrix);
+}
+else
+    Console.WriteLine("Колличество элементов массива не четное");
